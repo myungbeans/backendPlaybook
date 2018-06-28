@@ -6,7 +6,11 @@ require 'byebug'
 
 class ApplicationController < ActionController::API
 ### AUTH START
-    
+    def generateToken(user)
+        payload = { username: user.username, id: user.id }
+        JWT.encode payload, ENV['JWT_SECRET'], 'HS256'
+    end
+
     def getSecret
         ENV['JWT_SECRET']
     end
@@ -36,7 +40,7 @@ class ApplicationController < ActionController::API
         end
     end
 
-    def userMatch
+    def requiresUserMatch
         @user = User.find(params[:user_id])
         if @user.id != getDecodedToken()[0]["id"]
             render json: {

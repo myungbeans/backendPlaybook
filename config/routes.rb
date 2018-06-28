@@ -3,6 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:index, :create]
       resources :plays, only: [:index, :create]
+      post '/sessions/', to: 'sessions#create'
     end
   end
 end

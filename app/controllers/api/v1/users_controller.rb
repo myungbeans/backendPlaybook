@@ -1,6 +1,6 @@
 class Api::V1::UsersController < ApplicationController
-    before_action :loginRequired, only: [:user_ingredients]
-    before_action :userMatch, only: [:user_ingredients]
+    before_action :loginRequired, only: [:index]
+    before_action :requiresUserMatch, only: [:user_plays]
 
     def index
         @users = User.all
@@ -15,15 +15,17 @@ class Api::V1::UsersController < ApplicationController
         @user.password = params[:password]
 
         if (@user.save)
-
             payload = { username: @user.username, id: @user.id }
-
             token = JWT.encode payload, ENV['JWT_SECRET'], 'HS256'
-
-            render json: { token: token }
+            render json: { token: token, id: @user.id }
         else
             render json: { errors: @user.errors.full_messages}, status: :unprocessable_entity
         end
+    end
+
+    def user_plays
+        @user = User.find(params[:user_id])
+        render json: @user.plays
     end
 
     private
