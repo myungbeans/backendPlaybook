@@ -1,5 +1,5 @@
 class PlayerSerializer < ActiveModel::Serializer
-    attributes :name, :movesets
+    attributes :name, :movesets, :x, :y
   
     private
     def movesets
