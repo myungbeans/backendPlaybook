@@ -1,8 +1,10 @@
 class PlayerSerializer < ActiveModel::Serializer
-    attributes :name, :movesets, :x, :y
-  
-    private
-    def movesets
-      PlayerSerializer.new(object.players).attributes
-    end
+  attributes :id, :name, :movesets, :x, :y
+
+  belongs_to :play
+
+  private
+  def movesets
+    PlayerSerializer.new(object.players).attributes
+  end
 end
