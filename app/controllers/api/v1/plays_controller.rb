@@ -1,4 +1,4 @@
-class Api::V1::PlayController < ApplicationController
+class Api::V1::PlaysController < ApplicationController
     before_action :loginRequired, only: [:create]
 
     def create
@@ -14,5 +14,10 @@ class Api::V1::PlayController < ApplicationController
         else
             render json: { errors: @user.errors.full_messages}, status: :unprocessable_entity
         end
+    end
+
+    def play_players
+        @play = Play.find(params[:play_id])
+        render json: @play.players
     end
 end

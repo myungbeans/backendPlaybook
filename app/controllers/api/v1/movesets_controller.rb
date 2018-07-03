@@ -1,4 +1,4 @@
-class Api::V1::MovesetController < ApplicationController
+class Api::V1::MovesetsController < ApplicationController
     def create
         @moveset = Moveset.new
 

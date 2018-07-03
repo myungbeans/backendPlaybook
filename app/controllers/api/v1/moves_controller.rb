@@ -1,4 +1,4 @@
-class Api::V1::MoveController < ApplicationController
+class Api::V1::MovesController < ApplicationController
     def create
         @move = Move.new
 
