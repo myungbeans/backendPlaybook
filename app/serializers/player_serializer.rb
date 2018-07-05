@@ -1,5 +1,5 @@
 class PlayerSerializer < ActiveModel::Serializer
-  attributes :id, :name, :movesets, :x, :y
+  attributes :id, :name, :moves, :x, :y
 
   belongs_to :play
 

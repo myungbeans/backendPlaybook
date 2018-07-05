@@ -1,4 +1,4 @@
 class Player < ApplicationRecord
-    has_many :movesets
+    has_many :moves
     belongs_to :play
 end

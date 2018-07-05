@@ -1,3 +1,3 @@
 class Move < ApplicationRecord
-    belongs_to :moveset
+    belongs_to :player
 end

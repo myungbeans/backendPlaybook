@@ -1,7 +1,7 @@
 class CreateMoves < ActiveRecord::Migration[5.2]
   def change
     create_table :moves do |t|
-      t.integer :moveset_id
+      t.integer :player_id
       t.integer :startX
       t.integer :startY
       t.integer :endX
@@ -9,6 +9,7 @@ class CreateMoves < ActiveRecord::Migration[5.2]
       t.integer :startDelay
       t.integer :endDelay
       t.integer :duration
+      t.integer :order
 
       t.timestamps
     end

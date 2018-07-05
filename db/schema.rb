@@ -16,7 +16,7 @@ ActiveRecord::Schema.define(version: 2018_06_28_151229) do
   enable_extension "plpgsql"
 
   create_table "moves", force: :cascade do |t|
-    t.integer "moveset_id"
+    t.integer "player_id"
     t.integer "startX"
     t.integer "startY"
     t.integer "endX"
@@ -24,13 +24,6 @@ ActiveRecord::Schema.define(version: 2018_06_28_151229) do
     t.integer "startDelay"
     t.integer "endDelay"
     t.integer "duration"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "movesets", force: :cascade do |t|
-    t.integer "player_id"
-    t.integer "sequence"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

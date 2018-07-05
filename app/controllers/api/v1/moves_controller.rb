@@ -2,7 +2,8 @@ class Api::V1::MovesController < ApplicationController
     def create
         @move = Move.new
 
-        @move.moveset_id = params[:moveset_id]
+        @move.order = @move.id
+        @move.player_id = params[:player_id]
         @move.startX = params[:startX]
         @move.startY = params[:startY]
         @move.endX = params[:endX]
@@ -13,7 +14,8 @@ class Api::V1::MovesController < ApplicationController
 
         if (@move.save)
             render json: { 
-                id: @move.id, 
+                id: @move.id,
+                order: @move.order,
                 startX: @move.startX,
                 startY: @move.startY,
                 endX: @move.endX,
@@ -21,7 +23,7 @@ class Api::V1::MovesController < ApplicationController
                 startDelay: @move.startDelay,
                 endDelay: @move.endDelay,
                 duration: @move.duration,
-                moveset_id: @move.moveset_id
+                player_id: @move.player_id,
             }
         else
             render json: { errors: @user.errors.full_messages}, status: :unprocessable_entity

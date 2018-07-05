@@ -1,4 +1,5 @@
 require 'byebug'
+
 class Api::V1::PlayersController < ApplicationController
     def create
         @player = Player.new
@@ -23,5 +24,11 @@ class Api::V1::PlayersController < ApplicationController
         else
             render json: { errors: @user.errors.full_messages}, status: :unprocessable_entity
         end
+    end
+
+    def player_moves
+        @player = Player.find(params[:user_id])
+        @moves = @player.moves.order(:order)
+        render json: @moves
     end
 end

@@ -1,3 +1,5 @@
+require 'byebug'
+
 class Api::V1::PlaysController < ApplicationController
     before_action :loginRequired, only: [:create]
 
@@ -18,6 +20,9 @@ class Api::V1::PlaysController < ApplicationController
 
     def play_players
         @play = Play.find(params[:play_id])
+        players = @play.players
+        byebug
+
         render json: @play.players
     end
 end
