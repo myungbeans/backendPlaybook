@@ -11,10 +11,9 @@ class Api::V1::PlaysController < ApplicationController
 
         if (@play.save)
             payload = { id: @play.id, title: @play.title, user_id: @play.user_id }
-            # token = JWT.encode payload, ENV['JWT_SECRET'], 'HS256'
             render json: { id: @play.id, title: @play.title, user_id: @play.user_id }
         else
-            render json: { errors: @user.errors.full_messages}, status: :unprocessable_entity
+            render json: { errors: @user.errors.full_messages}, status: :unprocessable_entity 
         end
     end
 
