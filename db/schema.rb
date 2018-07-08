@@ -24,14 +24,13 @@ ActiveRecord::Schema.define(version: 2018_06_28_151229) do
     t.integer "startDelay"
     t.integer "endDelay"
     t.integer "duration"
+    t.integer "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "players", force: :cascade do |t|
     t.integer "play_id"
-    t.integer "x"
-    t.integer "y"
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
