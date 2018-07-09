@@ -21,7 +21,8 @@ Player.create({
         endY: 100, 
         startDelay: 0, 
         endDelay: 0, 
-        duration: 3
+        duration: 3,
+        order: 0,
     }]
 })
 # Move.create(player_id: 1, startX: 626, startY: 325, endX: 626, endY: 100, startDelay: 0, endDelay: 0, duration: 3)
