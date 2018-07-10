@@ -20,4 +20,9 @@ class Api::V1::PlaysController < ApplicationController
         @play = Play.find(params[:play_id])
         render json: @play.players
     end
+
+    def destroy
+        @play = Play.find(params[:id])
+        @play.delete
+    end
 end
