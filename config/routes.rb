@@ -3,7 +3,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       resources :users, only: [:index, :create]
       resources :plays, only: [:index, :create, :destroy]
-      resources :players, only: [:create, :update]
+      resources :players, only: [:create, :update, :destroy]
       resources :moves, only: [:update]
 
       get '/users/:user_id/plays/', to: 'users#user_plays'

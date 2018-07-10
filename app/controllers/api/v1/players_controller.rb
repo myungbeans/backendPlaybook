@@ -33,6 +33,11 @@ class Api::V1::PlayersController < ApplicationController
         end
     end
 
+    def destroy
+        @player = Player.find(params[:id])
+        Move.where(player_id: @player.id).delete_all
+    end
+
     private
     def player_params
         params.require(:player).permit(:id, :name, moves_attributes: [:id, :player_id, :startX, :startY, :endX, :endY, :order, :startDelay, :endDelay, :duration])
