@@ -10,10 +10,9 @@ class Api::V1::PlaysController < ApplicationController
         @play.title = params[:title]
 
         if (@play.save)
-            payload = { id: @play.id, title: @play.title, user_id: @play.user_id }
             render json: { id: @play.id, title: @play.title, user_id: @play.user_id }
         else
-            render json: { errors: @user.errors.full_messages}, status: :unprocessable_entity 
+            render json: { errors: @play.errors.full_messages}, status: :unprocessable_entity 
         end
     end
 
