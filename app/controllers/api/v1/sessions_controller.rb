@@ -8,7 +8,7 @@ class Api::V1::SessionsController < ApplicationController
             render json: { token: token, id: @user.id }
         else
             render json: {
-                errors: "Could not find username or password."
+                errors: ["No match for username or password."]
             }, status: :unauthorized
         end
     end
